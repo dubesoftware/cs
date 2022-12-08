@@ -8,7 +8,10 @@ def is_valid(s)
     end
   end
 
-  if !(contains_char) || s.size < 2 || s.size > 104
+  if chars.filter { |c| chars.find_index(c).odd? }.include?(s.chars.first) ||
+      !(contains_char) ||
+      s.size < 2 ||
+      s.size > 104
     return false
   end
     
@@ -59,3 +62,4 @@ p is_valid '()[]{}'
 p is_valid '(]'
 p is_valid '([)]'
 p is_valid '{[]}'
+p is_valid ')([]{}'
