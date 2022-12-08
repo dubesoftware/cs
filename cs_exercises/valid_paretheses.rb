@@ -1,5 +1,5 @@
 def is_valid(s)
-  chars = ['(', ')', '{', '}', '[', ']']
+  chars = %w( ( ) { } [ ] )
   contains_char = nil
 
   chars.each do |c|
@@ -16,37 +16,37 @@ def is_valid(s)
   expected = []
   counter = 0
 
-  s.each_char do |c|    
+  s.each_char do |c|
     case c
     when '('
       stack << c
-      counter += 1
       expected << ')'
+      counter += 1
     when ')'
       if expected.last == ')'
         stack.pop
-        counter -= 1
         expected.pop
+        counter -= 1
       end
     when '{'
       stack << c
-      counter += 1
       expected << '}'
+      counter += 1
     when '}'
       if expected.last == '}'
         stack.pop
-        counter -= 1
         expected.pop
+        counter -= 1
       end
     when '['
       stack << c
-      counter += 1
       expected << ']'
+      counter += 1
     when ']'
       if expected.last == ']'
         stack.pop
-        counter -= 1
         expected.pop
+        counter -= 1
       end
     end
   end
@@ -54,13 +54,8 @@ def is_valid(s)
   counter == 0
 end
   
-# p is_valid("ateststring")
-# p is_valid("(){}[]")
-# p is_valid("({[]})")
-# p is_valid("({[abcscsc]})")
-# p is_valid("({[abcscsc)}]")
-# p is_valid("){[abcscsc)}]")
-# p is_valid("(fvf{fdvf[abcscsc)sc}c]")
-# p is_valid("(fvf{fdvf[abcscsc]sc}c)")
-# p is_valid("(")
-# p is_valid("{}")
+p is_valid '()'
+p is_valid '()[]{}'
+p is_valid '(]'
+p is_valid '([)]'
+p is_valid '{[]}'
