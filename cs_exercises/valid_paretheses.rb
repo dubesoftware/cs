@@ -4,7 +4,7 @@ def is_valid(s)
 
   chars.each do |c|
     if s.include?(c)
-      contains_char = true
+      contains_char = true if !(contains_char)
     end
   end
 
